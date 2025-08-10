@@ -1,47 +1,218 @@
 .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  position: relative;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: var(--text-primary);
+  position: relative;
+  display: block;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.skillCategory {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.iconWrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: var(--accent-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.skillCategory:hover .iconWrapper {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.categoryTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.skillsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.skillItem {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  border-radius: 8px;
+  background: var(--skill-bg);
+  transition: all 0.2s ease;
+  cursor: default;
+  border: 1px solid var(--border-color);
+}
+
+.skillItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.skillIconWrapper {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+  transition: transform 0.2s ease;
+}
+
+.skillItem:hover .skillIconWrapper {
+  transform: scale(1.1);
+}
+
+.skillName {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
   text-align: center;
+  transition: color 0.2s ease;
+}
 
-  span {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
+.skillItem:hover .skillName {
+  color: var(--text-primary);
+}
 
-  img {
-    width: 20px;
+/* Dark mode specific styles */
+[data-theme='dark'] .skillItem {
+  --skill-bg: #1e293b;
+  --skill-icon-bg: #1e293b;
+}
+
+[data-theme='light'] .skillItem {
+  --skill-bg: #ffffff;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .skillsGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.skillList {
-  display: flex;
-  justify-content: space-evenly;
-  align-self: center;
-  flex-wrap: wrap;
-  row-gap: 40px;
-  max-width: 26ch;
+@media (max-width: 768px) {
+  .container {
+    padding: 3rem 1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .skillsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .skillCategory {
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .skillsList {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
 }
 
-hr {
-  width: 100px;
-  height: 1px;
-  border: none;
-  background-color: var(--text-color);
-  margin: 30px auto;
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+  
+  .skillsList {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-@media (width >= 800px) {
-  .skillList {
-    max-width: fit-content;
-    gap: 30px;
+[data-theme='dark'] .skillCategory {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
 
-    p {
-      font-size: 20px;
-    }
-  }
+[data-theme='dark'] .skillItem {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
 
-  hr {
-    width: 300px;
+/* Animation for skill items */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Background pattern */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 25px 25px, var(--bg-secondary) 2%, transparent 0%),
+                    radial-gradient(circle at 75px 75px, var(--bg-secondary) 2%, transparent 0%);
+  background-size: 100px 100px;
+  opacity: 0.1;
+  z-index: -1;
+  pointer-events: none;
 }
