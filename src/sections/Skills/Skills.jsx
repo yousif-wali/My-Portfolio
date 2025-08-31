@@ -4,6 +4,7 @@ import styles from './SkillsStyles.module.css';
 import { useTheme } from '../../common/ThemeContext';
 import { FaCode, FaServer, FaTools, FaCodeBranch, FaJava, FaPython, FaPhp, FaNodeJs, FaReact, FaVuejs, FaLaravel, FaDocker } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiAngular, SiNodedotjs, SiTailwindcss, SiDjango, SiRedux, SiWebpack, SiGit, SiJest, SiBootstrap, SiC, SiCplusplus, SiKotlin, SiGo, SiPerl, SiSwift } from 'react-icons/si';
+import { TbBrandCSharp } from "react-icons/tb";
 
 const skillsByCategory = [
   {
@@ -49,6 +50,7 @@ const skillsByCategory = [
     skills: [
       { name: 'C', icon: <SiC className={styles.skillIcon} /> },
       { name: 'C++', icon: <SiCplusplus className={styles.skillIcon} /> },
+      { name: 'C#', icon: <TbBrandCSharp className={styles.skillIcon} /> },
       { name: 'Kotlin', icon: <SiKotlin className={styles.skillIcon} /> },
       { name: 'Perl', icon: <SiPerl className={styles.skillIcon} /> },
       { name: 'Swift', icon: <SiSwift className={styles.skillIcon} /> },

@@ -27,6 +27,7 @@ export default function EducationList({ title, verifyTitle, verify, courses, dat
       animate={inView ? "visible" : "hidden"}
       variants={itemVariants}
       whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
+      style={{border: "1px solid white", padding: "1rem", borderRadius: "8px", marginTop: "0.5rem", marginBottom: "0.5rem"}}
     >
       <div className="educationHeader">
         <div>
@@ -36,7 +37,8 @@ export default function EducationList({ title, verifyTitle, verify, courses, dat
         {date && <span className="educationDate">{date}</span>}
       </div>
       
-      <ul className="courseList">
+      Technologies utilized:
+      <ul className="courseList" style={{display: "grid", gridTemplateColumns: "auto auto auto", gap: "1px", marginTop: "0.5rem"}}>
         {courses.map((item, index) => (
           <li key={index} className="courseItem">
             {item}
