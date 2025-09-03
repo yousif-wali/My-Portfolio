@@ -17,6 +17,76 @@ export default function Education() {
     threshold: 0.1
   });
 
+  // Education and Certification data with categories
+  const educationData = [
+    // University of Colorado Boulder
+    { title: "Master's of Computer Science", institution: "University of Colorado Boulder", category: "Graduate Degree", date: "2025", provider: "University" },
+    { title: "Graduate Certificate in Artificial Intelligence", institution: "University of Colorado Boulder", category: "Graduate Certificate", date: "2025", provider: "University" },
+    
+    // Coursera Certifications
+    { title: "iOS Developer", institution: "Meta", category: "Professional Certificate", date: "2023", provider: "Coursera" },
+    { title: "Android Developer", institution: "Meta", category: "Professional Certificate", date: "2023", provider: "Coursera" },
+    { title: "Front-End Developer", institution: "Meta", category: "Professional Certificate", date: "2023", provider: "Coursera" },
+    { title: "Back-End Developer", institution: "Meta", category: "Professional Certificate", date: "2023", provider: "Coursera" },
+    { title: "Full-Stack Developer", institution: "Meta", category: "Professional Certificate", date: "2025", provider: "Coursera" },
+    { title: "Getting Started with Go", institution: "University of California, Irvine", category: "Course Certificate", date: "2023", provider: "Coursera" },
+    { title: "Introduction to Artificial Intelligence (AI)", institution: "IBM", category: "Course Certificate", date: "2023", provider: "Coursera" },
+    
+    // Sololearn Certifications
+    { title: "Angular + Nestjs", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Introduction to C", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "C", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Introduction to C++", institution: "Sololearn", category: "Programming Certificate", date: "2025", provider: "Sololearn" },
+    { title: "Game Development with Js", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "SQL Intermediate", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Python for Finance", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Javascript Intermediate", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Intermediate to C#", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "HTML", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Responsive Web Design", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Introduction to Javascript", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Kotlin", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "R", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Tech for Everyone", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Swift 4", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Web Development Fundamentals", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "C++", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "PHP", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "C# Intermediate", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Ruby", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Java", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "Python Data Structures", institution: "Sololearn", category: "Programming Certificate", date: "2023", provider: "Sololearn" },
+    { title: "JQuery", institution: "Sololearn", category: "Programming Certificate", date: "2021", provider: "Sololearn" },
+    { title: "Python for Beginners", institution: "Sololearn", category: "Programming Certificate", date: "2021", provider: "Sololearn" },
+    { title: "SQL", institution: "Sololearn", category: "Programming Certificate", date: "2021", provider: "Sololearn" },
+    { title: "Coding for Marketers", institution: "Sololearn", category: "Programming Certificate", date: "2021", provider: "Sololearn" },
+    { title: "React + Redux", institution: "Sololearn", category: "Programming Certificate", date: "2021", provider: "Sololearn" },
+    { title: "CSS", institution: "Sololearn", category: "Programming Certificate", date: "2021", provider: "Sololearn" },
+    { title: "Javascript", institution: "Sololearn", category: "Programming Certificate", date: "2021", provider: "Sololearn" },
+    { title: "C#", institution: "Sololearn", category: "Programming Certificate", date: "2021", provider: "Sololearn" }
+  ];
+
+  // Category color mapping
+  const getCategoryColor = (category) => {
+    const colors = {
+      'Graduate Degree': '#dc2626',
+      'Graduate Certificate': '#ea580c',
+      'Professional Certificate': '#3b82f6',
+      'Course Certificate': '#10b981',
+      'Programming Certificate': '#8b5cf6'
+    };
+    return colors[category] || '#6b7280';
+  };
+
+  // Calculate category counts
+  const categoryCounts = educationData.reduce((acc, item) => {
+    acc[item.category] = (acc[item.category] || 0) + 1;
+    return acc;
+  }, {});
+
+  const sortedCategories = Object.entries(categoryCounts)
+    .sort(([,a], [,b]) => b - a);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -39,6 +109,33 @@ export default function Education() {
       >
         Education & Certifications
       </motion.h1>
+
+      <motion.div 
+        className={styles.categoryStats}
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <div className={styles.statsHeader}>
+          <span className={styles.totalItems}>Total: {educationData.length} Credentials</span>
+        </div>
+        <div className={styles.categoryList}>
+          {sortedCategories.map(([category, count]) => (
+            <div 
+              key={category} 
+              className={styles.categoryItem}
+              style={{ borderColor: getCategoryColor(category) }}
+            >
+              <span 
+                className={styles.categoryDot}
+                style={{ backgroundColor: getCategoryColor(category) }}
+              ></span>
+              <span className={styles.categoryName}>{category}</span>
+              <span className={styles.categoryCount}>{count}</span>
+            </div>
+          ))}
+        </div>
+      </motion.div>
       <section className={styles.headerList}><GiGraduateCap/> <span>University of Colorado Boulder</span></section>
       <motion.div 
         className={styles.educationGrid}
@@ -208,6 +305,16 @@ export default function Education() {
             <IconDesc icon={<SiC className={styles.icon}/>} text="C"/>,
           ]}
           date="2023"
+          institution="Sololearn"
+        />
+        <EducationList 
+          title="Introduction to C++" 
+          verifyTitle="View Certificate" 
+          verify="https://www.sololearn.com/certificates/CC-EIPGX7O9" 
+          courses={[
+            <IconDesc icon={<TbBrandCpp className={styles.icon}/>} text="C++"/>,
+          ]}
+          date="2025"
           institution="Sololearn"
         />
          <EducationList 

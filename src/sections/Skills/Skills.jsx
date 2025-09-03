@@ -5,7 +5,7 @@ import { useTheme } from '../../common/ThemeContext';
 import { FaCode, FaServer, FaTools, FaCodeBranch, FaJava, FaPython, FaPhp, FaNodeJs, FaReact, FaVuejs, FaLaravel, FaDocker } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiAngular, SiNodedotjs, SiTailwindcss, SiDjango, SiRedux, SiWebpack, SiGit, SiJest, SiBootstrap, SiC, SiCplusplus, SiKotlin, SiGo, SiPerl, SiSwift } from 'react-icons/si';
 import { TbBrandCSharp } from "react-icons/tb";
-
+import { SiZig } from "react-icons/si";
 const skillsByCategory = [
   {
     title: 'Frontend',
@@ -55,6 +55,7 @@ const skillsByCategory = [
       { name: 'Perl', icon: <SiPerl className={styles.skillIcon} /> },
       { name: 'Swift', icon: <SiSwift className={styles.skillIcon} /> },
       { name: 'PHP', icon: <FaPhp className={styles.skillIcon} /> },
+      { name: "Zig", icon: <SiZig className={styles.skillIcon}/>},
     ]
   }
 ];

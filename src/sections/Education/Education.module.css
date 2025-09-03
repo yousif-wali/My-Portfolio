@@ -30,12 +30,85 @@
   border-radius: 2px;
 }
 
+.categoryStats {
+  margin: 3rem auto 2rem;
+  max-width: 900px;
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.statsHeader {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.totalItems {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--accent-color), #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.categoryList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.categoryItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-primary);
+  border-radius: 12px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.categoryItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.categoryDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.categoryName {
+  flex: 1;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.categoryCount {
+  background: var(--accent-color);
+  color: white;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-width: 24px;
+  text-align: center;
+}
+
 .educationGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
   padding: 0 1.5rem;
   margin-top: 2rem;
+  justify-content: center;
 }
 
 .educationItem {
@@ -178,6 +251,24 @@ ul{
     margin-bottom: 3rem;
   }
   
+  .categoryStats {
+    margin: 2rem auto 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .categoryList {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .categoryItem {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .totalItems {
+    font-size: 1.1rem;
+  }
+  
   .educationGrid {
     grid-template-columns: 1fr;
     padding: 0 1rem;
@@ -185,6 +276,30 @@ ul{
   
   .educationItem {
     padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .categoryStats {
+    margin: 1.5rem auto 1rem;
+    padding: 1.25rem;
+  }
+  
+  .categoryList {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .categoryItem {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .categoryName {
+    font-size: 0.85rem;
+  }
+  
+  .totalItems {
+    font-size: 1rem;
   }
 }
 
